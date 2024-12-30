@@ -2,29 +2,30 @@
 
 This repository contains the implementation of a novel deep learning model for image denoising and deblurring. The proposed architecture is built upon the U-Net framework and is enhanced with Spatial and Channel Attention (SCA) mechanisms and Non-Local Blocks to improve restoration quality and preserve defects of interest.
 
-**Overview**
+## Overview
 
-The model is designed to recover clean images from noisy and blurred inputs while preserving critical regions.
+The model is designed to recover clean images from noisy and blurred inputs while preserving critical regions. It effectively removes noise and blur, ensuring that important features such as edges and textures remain intact. By combining Charbonnier Loss, SSIM Loss, and Edge Loss, the model optimizes both pixel-level accuracy and structural fidelity, making it ideal for applications that require high-quality image restoration and preservation of key details.
 
-**Key architectural highlights**
+## Key architectural highlights
 
-U-Net Framework: For multi-scale feature extraction and reconstruction.
+- U-Net Framework: For multi-scale feature extraction and reconstruction.
 
-Spatial and Channel Attention: Dynamically prioritizes significant regions in the image.
+- Spatial and Channel Attention: Dynamically prioritizes significant regions in the image.
 
-Non-Local Block: Captures global dependencies to enhance restoration performance.
+- Non-Local Block: Captures global dependencies to enhance restoration performance.
 
 ![Proposed_Model](Model_Architecture/Proposed_Model.png)
 
 
-**Dataset**
+## Dataset
 
 The experiments use the **MVTec Anomaly Detection (AD) dataset**, modified to include artificially degraded images (noise and blur).
+
 This dataset is organized into the following 15 categories: tile, wood, grid, pill, capsule, screw, carpet, cable, hazelnut, toothbrush, zipper, metal nut, leather, transistor, bottle
 
-Training Set: 932 degraded images and corresponding clean ground truth.
-Validation Set: 88 degraded images with corresponding clean ground truth.
-Defect Masks: Provided to ensure critical regions are preserved during restoration.
+- Training Set: 932 degraded images and corresponding clean ground truth.
+- Validation Set: 88 degraded images with corresponding clean ground truth.
+- Defect Masks: Provided to ensure critical regions are preserved during restoration.
 
 ## Experimental Settings
 - Framework: PyTorch  
@@ -34,19 +35,25 @@ Defect Masks: Provided to ensure critical regions are preserved during restorati
 - Training Epochs: 250
 - Loss Function: Combination of Charbonnier Loss, SSIM Loss, and Edge Loss.
 
-**Evaluation Metrics**
-Peak Signal-to-Noise Ratio (PSNR): Quantifies signal fidelity relative to noise.
+## Evaluation Metrics
+- Peak Signal-to-Noise Ratio (PSNR): Quantifies signal fidelity relative to noise.
 
-Structural Similarity Index Measure (SSIM): Evaluates perceptual similarity.
+- Structural Similarity Index Measure (SSIM): Evaluates perceptual similarity.
 
-**Results**
+## Results
 Average performance on the validation set:
 
-PSNR: 30.55 dB
-
-SSIM: 0.8450
+- PSNR: 30.55 dB
+- SSIM: 0.8450
 
 ![Proposed_Model](PSNR-SSIM_Results/PSNR_Categorywise.png)
 ![Proposed_Model](PSNR-SSIM_Results/SSIM_Categorywise.png)
+
+## Sample Outputs
+![Proposed_Model](Sample_Outputs/capule.png)
+![Proposed_Model](Sample_Outputs/bottle.png)
+![Proposed_Model](Sample_Outputs/hazelnut.png)
+
+
 
 
